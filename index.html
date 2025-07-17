@@ -3,232 +3,438 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Join Netflix's viewer program and get paid to watch your favorite shows. Limited spots available!">
-    <meta property="og:title" content="Get Paid to Watch Netflix">
-    <meta property="og:description" content="Turn your screen time into income with Netflix's viewer program.">
-    <title>Join Netflix - Get Paid to Watch Shows</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Netflix Review Program</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
         }
-
+        
         body {
-            background: #141414;
-            color: #e5e5e5;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #000;
+            color: #fff;
             line-height: 1.6;
             overflow-x: hidden;
         }
-
-        .header {
-            padding: 1.5rem;
-            background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.7));
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.6rem;
+            margin-left: 10px;
+            color: #E50914; /* Netflix red */
+            letter-spacing: -0.5px;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            background: #E50914; /* Netflix red */
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(229, 9, 20, 0.3);
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(229, 9, 20, 0.4);
+            background: #f40612; /* Brighter Netflix red */
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 60px;
+            text-align: center;
             position: relative;
         }
-
-        .netflix-logo {
-            height: 60px;
-            display: block;
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(229, 9, 20, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            max-width: 700px;
             margin: 0 auto;
-            transition: transform 0.3s;
         }
-
-        .hero {
-            min-height: 100vh;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1538481199705-c710c4e965fc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
-        }
-
-        .content {
-            transform: translateX(-50px);
-            opacity: 0;
-            animation: slideIn 0.8s forwards;
-        }
-
-        h1 {
-            font-size: clamp(2.5rem, 6vw, 3.5rem);
-            margin-bottom: 1.5rem;
-            color: #fff;
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
             line-height: 1.2;
-            animation-delay: 0.2s;
-        }
-
-        .subheading {
-            font-size: 1.2rem;
-            margin-bottom: 2.5rem;
-            color: #e5e5e5;
-            animation-delay: 0.4s;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: #E50914;
-            color: white;
-            padding: 1.2rem 2.5rem;
-            border-radius: 5px;
-            text-decoration: none;
             font-weight: 700;
-            transition: transform 0.3s, background 0.3s;
-            animation-delay: 0.6s;
+            color: #fff;
+        }
+        
+        .hero p {
             font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #ddd;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
         }
-
-        .cta-button:hover {
-            background: #B20710;
-            transform: scale(1.05);
-        }
-
-        .secondary-cta {
-            margin-top: 1.5rem;
-            opacity: 0;
-            animation: fadeIn 0.8s 1s forwards;
-            color: #a3a3a3;
-            font-weight: 600;
-        }
-
-        .trust-section {
-            padding: 2rem;
-            text-align: center;
-            background: #1c1c1c;
-            border-top: 1px solid #333;
-        }
-
-        .trust-section p {
-            margin: 0.5rem 0;
-        }
-
+        
+        /* How it Works */
         .steps-section {
-            padding: 3rem 2rem;
-            background: #1a1a1a;
+            padding: 60px 0;
         }
-
-        .steps-grid {
-            display: grid;
-            gap: 2rem;
-            max-width: 600px;
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            color: #fff;
+        }
+        
+        .steps {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            max-width: 900px;
             margin: 0 auto;
         }
-
-        .step-card {
-            opacity: 0;
-            transform: translateY(20px);
-            padding: 1.5rem;
-            background: #2a2a2a;
-            border-radius: 8px;
-            transition: transform 0.3s;
+        
+        .step {
+            flex: 1;
+            min-width: 250px;
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
         }
-
-        .step-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-            animation: cardAppear 0.6s forwards;
+        
+        .step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(229, 9, 20, 0.2);
         }
-
-        .step-number {
-            width: 40px;
-            height: 40px;
-            background: #E50914;
+        
+        .step-icon {
+            width: 70px;
+            height: 70px;
+            background: #E50914; /* Netflix red */
+            color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 700;
-            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            margin: 0 auto 25px;
         }
-
-        @keyframes slideIn {
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-
-        @keyframes cardAppear {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 2.5rem;
+        
+        .step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
             color: #fff;
         }
-
-        @media (min-width: 768px) {
-            .hero { padding: 2rem 4rem; }
-            .steps-grid { grid-template-columns: repeat(3, 1fr); }
+        
+        .step p {
+            color: #bbb;
+            font-size: 0.95rem;
+        }
+        
+        /* Benefits */
+        .benefits {
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .benefit {
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .benefit i {
+            font-size: 2.5rem;
+            color: #E50914; /* Netflix red */
+            margin-bottom: 20px;
+        }
+        
+        .benefit h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        .benefit p {
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(229, 9, 20, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+        }
+        
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: #fff;
+        }
+        
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #ddd;
+        }
+        
+        .cta-btn.large {
+            padding: 16px 50px;
+            font-size: 1.1rem;
+            display: inline-block;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 40px 0 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #E50914; /* Netflix red */
+        }
+        
+        .copyright {
+            color: #777;
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 0 40px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .step {
+                min-width: 100%;
+            padding: 25px 20px;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .cta-section {
+                padding: 70px 0;
+            }
+            
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <img src="https://www.freepnglogos.com/uploads/netflix-logo-0.png" alt="Netflix" class="netflix-logo">
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-text">NETFLIX</div>
+            </div>
+            <a href="https://rewarduplevel.com/aff_c?offer_id=973&aff_id=26967" class="cta-btn">Get Started</a>
+        </div>
     </header>
 
-    <main>
-        <section class="hero">
-            <div class="content">
-                <h1> Netflix Is Hiring Viewers to Review New Shows</h1>
-                <p class="subheading">No resume needed. No experience. Get paid up to watch and review shows. Apply below — it takes 30 seconds.</p>
-                <a href="https://getrewarrds.com/aff_c?offer_id=973&aff_id=26967" target="_blank" class="cta-button">Start Reviewing Now</a>
-                <p class="secondary-cta"></p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Get Paid to Review Netflix Shows</h1>
+                <p>Earn up to $750 for your honest opinions on movies and series</p>
+                <a href="https://rewarduplevel.com/aff_c?offer_id=973&aff_id=26967" class="cta-btn">Join Now</a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="trust-section">
-            <p>✔ Trusted by over 14,000 remote job seekers</p>
-            <p>✔ Verified payout program through major networks</p>
-            <p>✔ As seen on social media – TikTok, IG, YouTube</p>
-        </section>
-
-        <section class="steps-section">
-            <h2 class="section-title">How It Works</h2>
-            <div class="steps-grid">
-                <article class="step-card">
-                    <div class="step-number">1</div>
-                    <h3>Create Account</h3>
-                    <p>Visit our application portal and sign up with your email</p>
-                </article>
-                <article class="step-card">
-                    <div class="step-number">2</div>
-                    <h3>Complete Profile</h3>
-                    <p>Tell us about your viewing preferences and experience</p>
-                </article>
-                <article class="step-card">
-                    <div class="step-number">3</div>
-                    <h3>Start Reviewing</h3>
-                    <p>Begin watching and earn for each quality review submitted</p>
-                </article>
+    <!-- How it Works -->
+    <section class="steps-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>How It Works</h2>
+                <p>Simple steps to earn money watching Netflix</p>
             </div>
-        </section>
-    </main>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <h3>Watch</h3>
+                    <p>Stream Netflix shows and movies</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Review</h3>
+                    <p>Share your honest ratings and feedback</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3>Earn</h3>
+                    <p>Get paid within 24 hours</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="benefits">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Join Us</h2>
+                <p>Benefits of our Netflix review program</p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit">
+                    <i class="fas fa-wallet"></i>
+                    <h3>High Earnings</h3>
+                    <p>Up to $750 per detailed review</p>
+                </div>
+                
+                <div class="benefit">
+                    <i class="fas fa-couch"></i>
+                    <h3>Work From Home</h3>
+                    <p>Review from your couch anytime</p>
+                </div>
+                
+                <div class="benefit">
+                    <i class="fas fa-film"></i>
+                    <h3>Watch New Releases</h3>
+                    <p>Get early access to Netflix content</p>
+                </div>
+                
+                <div class="benefit">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Fast Payments</h3>
+                    <p>24-hour processing via PayPal</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Get Paid for Watching?</h2>
+                <p>Join our exclusive Netflix reviewer program today</p>
+                <a href="https://rewarduplevel.com/aff_c?offer_id=973&aff_id=26967" class="cta-btn large">Start Earning Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">NETFLIX</div>
+            <div class="copyright">
+                © 2023 Netflix Review Program. All rights reserved.
+            </div>
+        </div>
+    </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const heroElements = document.querySelectorAll('.content > *');
-            heroElements.forEach((el, index) => {
-                el.style.animationDelay = `${index * 0.2}s`;
-            });
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.3 });
-
-            document.querySelectorAll('.step-card').forEach((card, index) => {
-                card.style.transitionDelay = `${index * 0.2}s`;
-                observer.observe(card);
+        // Add animation to step cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const steps = document.querySelectorAll('.step');
+            
+            steps.forEach((step, index) => {
+                step.style.transitionDelay = `${index * 0.1}s`;
+                step.style.opacity = '0';
+                step.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    step.style.transition = 'all 0.5s ease-out';
+                    step.style.opacity = '1';
+                    step.style.transform = 'translateY(0)';
+                }, 500);
             });
         });
     </script>
